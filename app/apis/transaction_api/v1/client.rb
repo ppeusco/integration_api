@@ -1,7 +1,7 @@
 module TransactionApi
   module V1
     class Client
-      API_ENDPOINT = "https://increase-transactions.herokuapp.com".freeze
+      API_ENDPOINT = 'https://increase-transactions.herokuapp.com'.freeze
 
       attr_reader :oauth_token
       
@@ -9,24 +9,24 @@ module TransactionApi
         @oauth_token = oauth_token
       end
       
-      def get_client(client_id)
+      def transaction_client(client_id)
         request(
           http_method: :get,
           endpoint: "clients/#{client_id}"
         )
       end
 
-      def get_file
+      def transaction_file
         request(
           http_method: :get,
-          endpoint: "/file.txt"
+          endpoint: '/file.txt'
         )
       end
       
       private
 
       def client
-        @_client ||= Faraday.new(API_ENDPOINT) do |client|
+        @client ||= Faraday.new(API_ENDPOINT) do |client|
           client.request :url_encoded
           client.adapter Faraday.default_adapter
           client.headers['Authorization'] = "Bearer #{oauth_token}" if oauth_token.present?
