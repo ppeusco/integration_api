@@ -1,10 +1,10 @@
 module ApiExceptions
-  APIExceptionError = Class.new(APIExceptionError)
-  BadRequestError = Class.new(APIExceptionError)
-  UnauthorizedError = Class.new(APIExceptionError)
-  ForbiddenError = Class.new(APIExceptionError)
-  ApiRequestsQuotaReachedError = Class.new(APIExceptionError)
-  NotFoundError = Class.new(APIExceptionError)
-  UnprocessableEntityError = Class.new(APIExceptionError)
-  ApiError = Class.new(APIExceptionError)
+  ApiExceptionError = Class.new(StandardError)
+  BadRequestError = Class.new(ApiExceptionError)
+  UnauthorizedError = Class.new(ApiExceptionError)
+  ForbiddenError = Class.new(ApiExceptionError)
+  ApiRequestsQuotaReachedError = Class.new(ApiExceptionError)
+  NotFoundError = Class.new(ApiExceptionError)
+  UnprocessableEntityError = Class.new(ApiExceptionError)
+  ApiError = Class.new(ApiExceptionError)
 end
