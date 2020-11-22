@@ -3,7 +3,7 @@ class Transaction < ApplicationRecord
   belongs_to :client
 
   # validations
-  validates_presence_of :amount, :client_id, :type  
+  validates_presence_of :amount, :client_id, :transaction_type
 
-  enum type: { aprobado: 1, rechazado: 2 }
+  enum transaction_type: { aprobado: 1, rechazado: 2 }
 end
