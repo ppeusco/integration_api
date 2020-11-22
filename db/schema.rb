@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_10_26_105503) do
+ActiveRecord::Schema.define(version: 2020_11_22_143454) do
 
   create_table "clients", id: :string, force: :cascade do |t|
     t.string "email"
@@ -30,7 +30,7 @@ ActiveRecord::Schema.define(version: 2020_10_26_105503) do
     t.string "client_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "type"
+    t.integer "transaction_type"
     t.index ["client_id"], name: "index_transactions_on_client_id"
   end
 

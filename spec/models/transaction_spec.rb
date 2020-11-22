@@ -8,5 +8,5 @@ RSpec.describe Transaction, type: :model do
   # ensure columns amount, client_id and type are present before saving
   it { should validate_presence_of(:amount) }
   it { should validate_presence_of(:client_id) }
-  it { should validate_presence_of(:type) }
+  it { should validate_presence_of(:transaction_type) }
 end
