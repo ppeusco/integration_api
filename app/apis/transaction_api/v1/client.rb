@@ -1,3 +1,4 @@
+require 'tempfile'
 module TransactionApi
   module V1
     class Client
@@ -14,21 +15,31 @@ module TransactionApi
       end
 
       def transaction_client(client_id)
-        request(
+        response = request(
           http_method: :get,
           endpoint: "clients/#{client_id}"
         )
+
+        parsed_response = Oj.load(response.body)
+
+        return parsed_response if response_successful?(response)
+
+        raise error_class(response), "Code: #{response.status}, response: #{response.body}"
       end
 
       def transaction_file
-        request(
+        response = request(
           http_method: :get,
           endpoint: '/file.txt'
         )
+
+        return response.body if response_successful?(response)
+
+        raise error_class(response), "Code: #{response.status}, response: #{response.body}"
       end
 
       private
-      
+
       def client
         @client ||= Faraday.new(API_ENDPOINT) do |client|
           client.request :url_encoded
@@ -39,9 +50,8 @@ module TransactionApi
 
       def request(http_method:, endpoint:, params: {})
         response = client.public_send(http_method, endpoint, params)
-        parsed_response = Oj.load(response.body)
-        
-        return parsed_response if response_successful?(response)
+       
+        return response if response_successful?(response)
 
         raise error_class(response), "Code: #{response.status}, response: #{response.body}"
       end
