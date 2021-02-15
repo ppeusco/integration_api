@@ -51,3 +51,5 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem 'faraday', '~> 1.0', '>= 1.0.1'
 gem 'oj', '~> 3.10', '>= 3.10.14'
+gem 'sidekiq', '~> 4.1', '>= 4.1.2'
+gem 'sidekiq-scheduler', '~> 3.0', '>= 3.0.1'
