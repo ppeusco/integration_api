@@ -1,10 +1,13 @@
+# frozen_string_literal: true
+
 module RegistryManager
   module Parser
+    # app/services/registry_manager/parser/discount.rb
     class Transaction < ApplicationService
-
       Result = Struct.new(:transaction_id, :amount, :reserved, :type, keyword_init: true)
 
       def initialize(transaction)
+        super()
         @transaction = transaction
       end
 

@@ -1,6 +1,10 @@
+# frozen_string_literal: true
+
 module TransactionsManager
+  # app/services/transactions_manager/importer.rb
   class Importer < ApplicationService
     def initialize(parser:, file:)
+      super()
       @parser = parser
       @file = file
       @registries = []
@@ -14,9 +18,7 @@ module TransactionsManager
         when 1..3
           @stack.push(parser_factory(nro).call(line))
         when 4
-          @stack.push(parser_factory(nro).call(line))
-          @registries << @stack
-          @stack = Stack.new
+          stack_block(nro, line)
         end
       end
       @registries
@@ -39,6 +41,12 @@ module TransactionsManager
         3 => 'RegistryManager::Parser::Discount',
         4 => 'RegistryManager::Parser::Footer'
       }
+    end
+    
+    def stack_block(nro, line)
+      @stack.push(parser_factory(nro).call(line))
+      @registries << @stack
+      @stack = Stack.new
     end
   end
 end

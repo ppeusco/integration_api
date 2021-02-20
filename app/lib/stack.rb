@@ -1,10 +1,14 @@
+# frozen_string_literal: true
+
+# app/lib/stack.rb
 class Stack
   def initialize
+    super()
     @store = []
   end
 
-  def push(x)
-    @store.push x
+  def push(element)
+    @store.push element
   end
 
   def pop

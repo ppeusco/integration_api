@@ -1,3 +1,6 @@
+# frozen_string_literal: true
+
+# app/controllers/client_controller.rb
 class ClientsController < ApplicationController
   before_action :set_client, only: :show
 

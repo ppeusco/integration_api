@@ -1,16 +1,19 @@
+# frozen_string_literal: true
+
+# db/migrate/20201011133031_create_clients.rb
 class CreateClients < ActiveRecord::Migration[6.0]
   def change
-    create_table :clients, id: :string do |t|
-      t.string :email
-      t.string :first_name
-      t.string :last_name
-      t.string :job
-      t.string :country
-      t.string :address
-      t.string :zip_code
-      t.string :phone
+    create_table :clients, id: :string do |table|
+      table.string :email
+      table.string :first_name
+      table.string :last_name
+      table.string :job
+      table.string :country
+      table.string :address
+      table.string :zip_code
+      table.string :phone
 
-      t.timestamps
+      table.timestamps
     end
   end
 end

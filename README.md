@@ -15,7 +15,7 @@ This README would normally document whatever steps are necessary to get theappli
 Things you may want to cover:
 
 * Ruby version 
-  Ruby v2.7.2, Rails v6.0.3.4 
+  Ruby v3.0.0, Rails v6.0.3.4 
 
 * System dependencies
   * rspec-rails - Testing framework.

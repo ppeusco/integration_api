@@ -1,10 +1,13 @@
+# frozen_string_literal: true
+
 module RegistryManager
   module Parser
+    # app/services/registry_manager/parser/discount.rb
     class Discount < ApplicationService
-
       Result = Struct.new(:discount_id, :amount, :reserved, :type, keyword_init: true)
 
       def initialize(discount)
+        super()
         @discount = discount
       end
 

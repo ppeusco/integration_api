@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # app/controllers/transactions_controller.rb
 class TransactionsController < ApplicationController
   before_action :set_client

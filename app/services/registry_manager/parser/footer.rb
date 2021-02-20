@@ -1,10 +1,13 @@
+# frozen_string_literal: true
+
 module RegistryManager
   module Parser
+    # app/services/registry_manager/parser/discount.rb
     class Footer < ApplicationService
-
       Result = Struct.new(:reserved, :payment_date, :client_id, keyword_init: true)
 
       def initialize(footer)
+        super()
         @footer = footer
       end
 

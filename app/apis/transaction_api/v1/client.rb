@@ -1,16 +1,20 @@
+# frozen_string_literal: true
+
 require 'tempfile'
 module TransactionApi
   module V1
+    # This class defines the client to interact with the transaction api.
     class Client
       include HttpStatusCodes
       include ApiExceptions
 
-      API_ENDPOINT = 'https://increase-transactions.herokuapp.com'.freeze
-      API_REQUSTS_QUOTA_REACHED_MESSAGE = 'API rate limit exceeded'.freeze
+      API_ENDPOINT = 'https://increase-transactions.herokuapp.com'
+      API_REQUSTS_QUOTA_REACHED_MESSAGE = 'API rate limit exceeded'
 
       attr_reader :oauth_token
 
       def initialize(oauth_token = nil)
+        super()
         @oauth_token = oauth_token
       end
 
@@ -50,7 +54,7 @@ module TransactionApi
 
       def request(http_method:, endpoint:, params: {})
         response = client.public_send(http_method, endpoint, params)
-       
+
         return response if response_successful?(response)
 
         raise error_class(response), "Code: #{response.status}, response: #{response.body}"
