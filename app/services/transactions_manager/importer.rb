@@ -1,32 +1,25 @@
 module TransactionsManager
   class Importer < ApplicationService
-    def initialize(parser:, file:)
-      @parser = parser
-      @file = file
-      @registries = []
-      @stack = Stack.new
+    def initialize(args = {})
+      @lines = args[:lines]
+      @registry = Registry.new
     end
 
     def call
-      lines.each do |line|
+      @lines.each do |line|
         nro = line[0].to_i
         case nro
-        when 1..3
-          @stack.push(parser_factory(nro).call(line))
+        when 1..2
+          @registry.push(parser_factory(nro).call(line))
         when 4
-          @stack.push(parser_factory(nro).call(line))
-          @registries << @stack
-          @stack = Stack.new
+          @registry.push(parser_factory(nro).call(line))
+          ProcessRegistryJob.perform_later(registry: @registry.to_hash)
+          @registry = Registry.new
         end
       end
-      @registries
     end
 
     private
-
-    def lines
-      @parser.call(@file)
-    end
 
     def parser_factory(type)
       builder_classes[type].constantize
