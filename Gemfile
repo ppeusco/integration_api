@@ -3,7 +3,7 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '2.7.2'
+ruby '3.0.0'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 6.0.3', '>= 6.0.3.4'
@@ -55,5 +55,8 @@ gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 gem 'faraday', '~> 1.0', '>= 1.0.1'
 gem 'interactor-rails', '~> 2.2', '>= 2.2.1'
 gem 'oj', '~> 3.10', '>= 3.10.14'
+gem 'rubocop', '~> 1.11'
+gem 'rubocop-performance', '~> 1.10', '>= 1.10.1'
+gem 'rubocop-rspec', '~> 2.2'
 gem 'sidekiq', '~> 4.1', '>= 4.1.2'
 gem 'sidekiq-scheduler', '~> 3.0', '>= 3.0.1'

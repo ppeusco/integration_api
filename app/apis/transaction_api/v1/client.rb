@@ -3,6 +3,7 @@
 require 'tempfile'
 module TransactionApi
   module V1
+    # Increase api wrapping client
     class Client
       include HttpStatusCodes
       include ApiExceptions
