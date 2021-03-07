@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class ClientsController < ApplicationController
   before_action :set_client, only: :show
 
@@ -11,6 +13,10 @@ class ClientsController < ApplicationController
   def show
     json_response(@client)
   end
+
+  def pending_payments; end
+
+  def received_payments; end
 
   private
 

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 FactoryBot.define do
   factory :client do
     id { Faker::Alphanumeric.alphanumeric(number: 32) }

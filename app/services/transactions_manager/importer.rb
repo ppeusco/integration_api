@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module TransactionsManager
   class Importer < ApplicationService
     def initialize(args = {})

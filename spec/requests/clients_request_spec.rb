@@ -1,6 +1,8 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
-RSpec.describe "Clients API", type: :request do
+RSpec.describe 'Clients API', type: :request do
   # initialize test data
   let!(:clients) { create_list(:client, 10) }
   let(:client_id) { clients.first.id }

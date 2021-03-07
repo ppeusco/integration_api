@@ -1,8 +1,10 @@
+# frozen_string_literal: true
+
 module RegistryManager
   module Parser
     class Header < ApplicationService
-
-      Result = Struct.new(:payment_id, :currency, :total_amount, :total_discounts, :total_with_discounts, keyword_init: true)
+      Result = Struct.new(:payment_id, :currency, :total_amount, :total_discounts, :total_with_discounts,
+                          keyword_init: true)
 
       def initialize(header)
         @header = header

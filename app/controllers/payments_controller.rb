@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # app/controllers/payments_controller.rb
 class PaymentsController < ApplicationController
   before_action :set_client
@@ -11,6 +13,22 @@ class PaymentsController < ApplicationController
   # GET /clients/:client_id/payments/:id
   def show
     json_response(@payment)
+  end
+
+  # GET /clients/:client_id/payments/received
+  def received
+    json_response(
+      total_ars: @client.payments.received.in_ars.pluck(:total_with_discounts).sum(&:to_i),
+      total_usd: @client.payments.received.in_usd.pluck(:total_with_discounts).sum(&:to_i)
+    )
+  end
+
+  # GET /clients/:client_id/payments/pending
+  def pending
+    json_response(
+      total_ars: @client.pending_payments.in_ars.pluck(:total_with_discounts).sum(&:to_i),
+      total_usd: @client.pending_payments.in_usd.pluck(:total_with_discounts).sum(&:to_i)
+    )
   end
 
   private

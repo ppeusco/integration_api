@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Transaction < ApplicationRecord
   # model association
   belongs_to :client

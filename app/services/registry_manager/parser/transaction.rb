@@ -1,7 +1,8 @@
+# frozen_string_literal: true
+
 module RegistryManager
   module Parser
     class Transaction < ApplicationService
-
       Result = Struct.new(:transaction_id, :amount, :type, keyword_init: true)
 
       def initialize(transaction)

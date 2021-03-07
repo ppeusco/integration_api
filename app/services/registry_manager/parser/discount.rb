@@ -1,7 +1,8 @@
+# frozen_string_literal: true
+
 module RegistryManager
   module Parser
     class Discount < ApplicationService
-
       Result = Struct.new(:discount_id, :amount, :type, keyword_init: true)
 
       def initialize(discount)

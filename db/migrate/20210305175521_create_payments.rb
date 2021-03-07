@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class CreatePayments < ActiveRecord::Migration[6.0]
   def change
     create_table :payments, id: :string do |t|
@@ -10,7 +12,7 @@ class CreatePayments < ActiveRecord::Migration[6.0]
 
       t.timestamps
     end
-    
+
     add_index :payments, :client_id
   end
 end

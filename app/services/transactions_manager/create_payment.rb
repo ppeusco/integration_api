@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module TransactionsManager
   class CreatePayment
     include Interactor
@@ -8,7 +10,7 @@ module TransactionsManager
       payment = Payment.create!(
         id: context.registry['payment']['id'],
         payment_date: context.registry['payment']['payment_date'],
-        currency: context.registry['payment']['id'],
+        currency: context.registry['payment']['currency'],
         total_amount: context.registry['payment']['total_amount'],
         total_discounts: context.registry['payment']['total_discounts'],
         total_with_discounts: context.registry['payment']['total_with_discounts'],

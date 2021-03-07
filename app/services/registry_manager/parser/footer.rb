@@ -1,7 +1,8 @@
+# frozen_string_literal: true
+
 module RegistryManager
   module Parser
     class Footer < ApplicationService
-
       Result = Struct.new(:payment_date, :client_id, keyword_init: true)
 
       def initialize(footer)

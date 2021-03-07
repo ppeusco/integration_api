@@ -1,7 +1,9 @@
+# frozen_string_literal: true
+
 module TransactionsManager
   class FindOrCreateClient
     include Interactor
-    
+
     def call
       context.client_id = context.registry['client_id']
 
