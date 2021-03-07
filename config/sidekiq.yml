@@ -1,13 +1,14 @@
 ---
-:concurrency: 1
 :pidfile: ./tmp/pids/sidekiq.pid
 :logfile: ./log/sidekiq.log
 :queues:
  - default
- -transactions
+ - transactions
+ - process_registry
 :schedule:
   get_transactions_file:
-    cron: '0 2 * * *'
+    description: Get file.txt with transactions from Increase Transactions API.
     class: 'GetTransactionsFileJob'
     queue: transactions
+    every: '10m'
     

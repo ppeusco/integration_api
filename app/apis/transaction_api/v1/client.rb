@@ -11,7 +11,7 @@ module TransactionApi
       attr_reader :oauth_token
 
       def initialize(oauth_token = nil)
-        @oauth_token = oauth_token
+        @oauth_token = oauth_token || ENV['BEARER_TOKEN']
       end
 
       def transaction_client(client_id)

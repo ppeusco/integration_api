@@ -1,10 +1,12 @@
 class Stack
+  attr_reader :store
+  
   def initialize
     @store = []
   end
 
-  def push(x)
-    @store.push x
+  def push(line)
+    @store.push line
   end
 
   def pop
@@ -17,5 +19,9 @@ class Stack
 
   def empty?
     @store.empty?
+  end
+  
+  def shift
+    @store.shift
   end
 end
