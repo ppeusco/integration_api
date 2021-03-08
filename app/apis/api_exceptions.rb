@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module ApiExceptions
   ApiExceptionError = Class.new(StandardError)
   BadRequestError = Class.new(ApiExceptionError)

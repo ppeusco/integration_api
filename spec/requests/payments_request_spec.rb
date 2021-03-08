@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # spec/requests/payments_spec.rb
 require 'rails_helper'
 
@@ -34,7 +36,7 @@ RSpec.describe 'Payments API', type: :request do
       end
     end
   end
-  
+
   # Test suite for GET /clients/:client_id/payments/:id
   describe 'GET /clients/:client_id/payments/:id' do
     before { get "/clients/#{client_id}/payments/#{id}" }
@@ -58,6 +60,40 @@ RSpec.describe 'Payments API', type: :request do
 
       it 'returns a not found message' do
         expect(response.body).to match("{\"message\":\"Couldn't find Payment with [WHERE \\\"payments\\\".\\\"client_id\\\" = ? AND \\\"payments\\\".\\\"id\\\" = ?]\"}")
+      end
+    end
+  end
+  
+  # Test suite for GET /clients/:client_id/payments/pending
+  describe 'GET /clients/:client_id/payments' do
+    before { get "/clients/#{client_id}/payments/pending" }
+
+    context 'when client exists' do 
+      it 'returns status code 200' do
+        expect(response).to have_http_status(200)
+      end
+
+      it 'Returns a json with the total in pesos and the total in usd' do
+        expect(json.size).to eq(2)
+        expect(json['total_ars']).to eq(client.payments.pending.in_ars.pluck(:total_with_discounts).sum(&:to_i))
+        expect(json['total_usd']).to eq(client.payments.pending.in_usd.pluck(:total_with_discounts).sum(&:to_i))
+      end
+    end
+  end
+  
+  # Test suite for GET /clients/:client_id/payments/received
+  describe 'GET /clients/:client_id/payments' do
+    before { get "/clients/#{client_id}/payments/received" }
+
+    context 'when client exists' do 
+      it 'returns status code 200' do
+        expect(response).to have_http_status(200)
+      end
+
+      it 'Returns a json with the total in pesos and the total in usd' do
+        expect(json.size).to eq(2)
+        expect(json['total_ars']).to eq(client.payments.received.in_ars.pluck(:total_with_discounts).sum(&:to_i))
+        expect(json['total_usd']).to eq(client.payments.received.in_usd.pluck(:total_with_discounts).sum(&:to_i))
       end
     end
   end

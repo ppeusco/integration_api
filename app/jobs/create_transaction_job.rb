@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class CreateTransactionJob < ApplicationJob
   def perform(args = {})
     transaction = args[:transaction]

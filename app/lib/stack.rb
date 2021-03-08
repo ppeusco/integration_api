@@ -1,6 +1,8 @@
+# frozen_string_literal: true
+
 class Stack
   attr_reader :store
-  
+
   def initialize
     @store = []
   end
@@ -20,7 +22,7 @@ class Stack
   def empty?
     @store.empty?
   end
-  
+
   def shift
     @store.shift
   end

@@ -1,7 +1,9 @@
+# frozen_string_literal: true
+
 module TransactionsManager
   class CreateTransactions
     include Interactor
-    
+
     def call
       return unless context.client_exist
       return unless context.payment_exist

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module RegistryManager
   class HashCreator < ApplicationService
     def initialize(args = {})
@@ -6,14 +8,14 @@ module RegistryManager
       @header = @registry.shift
       @footer = @registry.pop
     end
-    
+
     def call
       @registry_hash[:client_id] = @footer.client_id
       @registry_hash[:payment] = payment_hash
       @registry_hash[:transactions] = transactions_hash
       @registry_hash
     end
-    
+
     private
 
     def payment_hash

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # spec/requests/transactions_spec.rb
 require 'rails_helper'
 
@@ -34,7 +36,7 @@ RSpec.describe 'Transactions API', type: :request do
       end
     end
   end
-  
+
   # Test suite for GET /clients/:client_id/transactions/:id
   describe 'GET /clients/:client_id/transactions/:id' do
     before { get "/clients/#{client_id}/transactions/#{id}" }
