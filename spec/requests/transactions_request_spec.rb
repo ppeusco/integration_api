@@ -6,7 +6,8 @@ require 'rails_helper'
 RSpec.describe 'Transactions API', type: :request do
   # initialize test data
   let!(:client) { create(:client) }
-  let!(:transactions) { create_list(:transaction, 20, client_id: client.id) }
+  let!(:payments)  { create_list(:payment, 1, client_id: client.id) }
+  let!(:transactions) { create_list(:transaction, 20, client_id: client.id, payment_id: payments.first.id) }
   let(:client_id) { client.id }
   let(:id) { transactions.first.id }
 
@@ -59,7 +60,7 @@ RSpec.describe 'Transactions API', type: :request do
       end
 
       it 'returns a not found message' do
-        expect(response.body).to match("{\"message\":\"Couldn't find Transaction with [WHERE \\\"transactions\\\".\\\"client_id\\\" = ? AND \\\"transactions\\\".\\\"id\\\" = ?]\"}")
+        expect(response.body).to match("{\"message\":\"Couldn't find Transaction with [WHERE \\\"transactions\\\".\\\"client_id\\\" = $1 AND \\\"transactions\\\".\\\"id\\\" = $2]\"}")
       end
     end
   end

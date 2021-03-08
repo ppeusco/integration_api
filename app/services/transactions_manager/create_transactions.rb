@@ -9,7 +9,11 @@ module TransactionsManager
       return unless context.payment_exist
 
       context.registry[:transactions].each do |transaction|
-        CreateTransactionJob.perform_later(transaction: transaction, client_id: context.client_id)
+        CreateTransactionJob.perform_later(
+          transaction: transaction, 
+          client_id: context.client_id,
+          payment_id: context.payment_id
+        )
       end
     end
   end
