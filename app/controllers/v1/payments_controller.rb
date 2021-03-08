@@ -8,7 +8,7 @@ module V1
 
     # GET /clients/:client_id/payments
     def index
-      json_response(@client.payments)
+      json_response(@client.payments.paginate(page: params[:page], per_page: 20))
     end
 
     # GET /clients/:client_id/payments/:id

@@ -6,7 +6,8 @@ module V1
 
     # GET /clients
     def index
-      @clients = Client.all
+      # get paginated clients
+      @clients = Client.all.paginate(page: params[:page], per_page: 20)
       json_response(@clients)
     end
 
