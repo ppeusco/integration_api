@@ -6,5 +6,6 @@ FactoryBot.define do
     amount { Faker::Number.number(digits: 10) }
     transaction_type { Faker::Number.between(from: 1, to: 2) }
     client_id factory: :client
+    payment_id factory: :payment
   end
 end

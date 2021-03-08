@@ -59,7 +59,7 @@ RSpec.describe 'Payments API', type: :request do
       end
 
       it 'returns a not found message' do
-        expect(response.body).to match("{\"message\":\"Couldn't find Payment with [WHERE \\\"payments\\\".\\\"client_id\\\" = ? AND \\\"payments\\\".\\\"id\\\" = ?]\"}")
+        expect(response.body).to match("{\"message\":\"Couldn't find Payment with [WHERE \\\"payments\\\".\\\"client_id\\\" = $1 AND \\\"payments\\\".\\\"id\\\" = $2]\"}")
       end
     end
   end
