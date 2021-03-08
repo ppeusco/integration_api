@@ -254,6 +254,7 @@ GEM
     websocket-driver (0.7.3)
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.5)
+    will_paginate (3.3.0)
     zeitwerk (2.4.2)
 
 PLATFORMS
@@ -266,7 +267,7 @@ DEPENDENCIES
   database_cleaner
   dotenv-rails (~> 2.7, >= 2.7.6)
   factory_bot_rails (~> 6.1.0)
-  faker
+  faker (~> 2.16)
   faraday (~> 1.0, >= 1.0.1)
   interactor-rails (~> 2.2, >= 2.2.1)
   listen (~> 3.2)
@@ -284,6 +285,7 @@ DEPENDENCIES
   spring-watcher-listen (~> 2.0.0)
   sqlite3 (~> 1.4)
   tzinfo-data
+  will_paginate (~> 3.3)
 
 RUBY VERSION
    ruby 3.0.0p0
