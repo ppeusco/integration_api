@@ -1,39 +1,24 @@
-A finance company wishes to integrate its customer balance system into a system of transactions. 
 
-These transactions are obtained through an API that reports the latestcustomer account movements.
+# Configuración:
+> git clone https://github.com/ppeusco/integration_api.git
+> git checkout master
+> cp .env.example .env
+> bundle install
 
-This REST API exposes the following information:
+### PostgreSQL
+Para la base de datos, si tienes PostgreSQL instalada y corriendo localmente:
+> rails db:setup # rails db:create db:migrate
 
-* Customer information.
+Si no lo tienes puedes utilizar docker, haciendo:
+> docker-compose up -d
+> rails db:environment:set RAILS_ENV=development
+> rails db:setup # rails db:create db:migrate
 
-* Money that customers collected and the money they will collect.
+### Sidekiq:
+> bundle exec sidekiq -C config/sidekiq.yml
 
-* Customer transactions.
+### Para correr Integration API:
+> bundle exec rails s
 
-This README would normally document whatever steps are necessary to get theapplication up and running.
-
-Things you may want to cover:
-
-* Ruby version 
-  Ruby v2.7.2, Rails v6.0.3.4 
-
-* System dependencies
-  * rspec-rails - Testing framework.
-  * factorybotrails - A fixtures replacement with a more straightforward syntax.
-  * shoulda_matchers - Provides RSpec with additional matchers.
-  * database_cleaner - You guessed it! It literally cleans our test database to ensure a clean state in each test suite.
-  * faker - A library for generating fake data. We’ll use this to generate test data.
-  
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+### Para correr los test:
+> bundle exec rspec       
