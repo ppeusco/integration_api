@@ -3,7 +3,7 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '2.7.2'
+ruby '3.0.0'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 6.0.3', '>= 6.0.3.4'
@@ -60,5 +60,6 @@ gem 'rubocop', '~> 1.11'
 gem 'rubocop-performance', '~> 1.10', '>= 1.10.1'
 gem 'rubocop-rspec', '~> 2.2'
 gem 'sidekiq', '~> 4.1', '>= 4.1.2'
-gem 'sidekiq-scheduler', '~> 3.0', '>= 3.0.1'
+#gem 'sidekiq-scheduler', '~> 3.0', '>= 3.0.1'
+gem 'sidekiq-scheduler', git: 'https://github.com/ppeusco/sidekiq-scheduler.git', branch: 'master'
 gem 'will_paginate', '~> 3.3'
