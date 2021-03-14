@@ -63,12 +63,12 @@ RSpec.describe 'Payments API', type: :request do
       end
     end
   end
-  
+
   # Test suite for GET /clients/:client_id/payments/pending
   describe 'GET /clients/:client_id/payments' do
     before { get "/clients/#{client_id}/payments/pending" }
 
-    context 'when client exists' do 
+    context 'when client exists' do
       it 'returns status code 200' do
         expect(response).to have_http_status(200)
       end
@@ -80,12 +80,12 @@ RSpec.describe 'Payments API', type: :request do
       end
     end
   end
-  
+
   # Test suite for GET /clients/:client_id/payments/received
   describe 'GET /clients/:client_id/payments' do
     before { get "/clients/#{client_id}/payments/received" }
 
-    context 'when client exists' do 
+    context 'when client exists' do
       it 'returns status code 200' do
         expect(response).to have_http_status(200)
       end

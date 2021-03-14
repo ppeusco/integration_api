@@ -13,7 +13,7 @@
     zip_code: Faker::Address.zip_code,
     phone: Faker::PhoneNumber.phone_number
   )
-  
+
   client.payments.create(
     id: Faker::Alphanumeric.alphanumeric(number: 32),
     payment_date: Faker::Date.between(from: 2.days.ago, to: 20.days.from_now),
@@ -22,7 +22,7 @@
     total_with_discounts: Faker::Number.number(digits: 13),
     currency: %w[000 001].sample
    )
-   
+
    client.transactions.create(
     id: Faker::Alphanumeric.alphanumeric(number: 32),
     amount: Faker::Number.number(digits: 10),

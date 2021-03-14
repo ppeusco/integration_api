@@ -10,7 +10,7 @@ module TransactionsManager
 
       context.registry[:transactions].each do |transaction|
         CreateTransactionJob.perform_later(
-          transaction: transaction, 
+          transaction: transaction,
           client_id: context.client_id,
           payment_id: context.payment_id
         )
