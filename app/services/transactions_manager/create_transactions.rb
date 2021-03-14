@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 module TransactionsManager
+  # This interactor create a transactions in the database.
   class CreateTransactions
     include Interactor
 

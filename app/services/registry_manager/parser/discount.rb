@@ -2,7 +2,9 @@
 
 module RegistryManager
   module Parser
+    # Parse the data corresponding to a discount.
     class Discount < ApplicationService
+      # Represent the data corresponding to a discount.
       Result = Struct.new(:discount_id, :amount, :type, keyword_init: true)
 
       def initialize(discount)

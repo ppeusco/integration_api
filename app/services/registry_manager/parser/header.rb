@@ -2,7 +2,9 @@
 
 module RegistryManager
   module Parser
+    # Parse the data corresponding to a header.
     class Header < ApplicationService
+      # Represent the data corresponding to a header.
       Result = Struct.new(:payment_id, :currency, :total_amount, :total_discounts, :total_with_discounts,
                           keyword_init: true)
 

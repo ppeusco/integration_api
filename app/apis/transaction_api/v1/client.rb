@@ -13,8 +13,8 @@ module TransactionApi
 
       attr_reader :oauth_token
 
-      def initialize(oauth_token = nil)
-        @oauth_token = oauth_token || ENV['BEARER_TOKEN']
+      def initialize(oauth_token)
+        @oauth_token = oauth_token
       end
 
       def transaction_client(client_id)
@@ -23,11 +23,12 @@ module TransactionApi
           endpoint: "clients/#{client_id}"
         )
 
-        parsed_response = Oj.load(response.body)
+        response_body = response.body
+        parsed_response = Oj.load(response_body)
 
         return parsed_response if response_successful?(response)
 
-        raise error_class(response), "Code: #{response.status}, response: #{response.body}"
+        raise error_class(response), "Code: #{response.status}, response: #{response_body}"
       end
 
       def transaction_file
@@ -36,9 +37,10 @@ module TransactionApi
           endpoint: '/file.txt'
         )
 
-        return response.body if response_successful?(response)
+        response_body = response.body
+        return response_body if response_successful?(response)
 
-        raise error_class(response), "Code: #{response.status}, response: #{response.body}"
+        raise error_class(response), "Code: #{response.status}, response: #{response_body}"
       end
 
       private

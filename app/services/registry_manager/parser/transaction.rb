@@ -2,7 +2,9 @@
 
 module RegistryManager
   module Parser
+    # Parse the data corresponding to a transaction.
     class Transaction < ApplicationService
+      # Represent the data corresponding to a transaction.
       Result = Struct.new(:transaction_id, :amount, :type, keyword_init: true)
 
       def initialize(transaction)

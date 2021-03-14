@@ -6,8 +6,8 @@ module ExceptionHandler
   extend ActiveSupport::Concern
 
   included do
-    rescue_from ActiveRecord::RecordNotFound do |e|
-      json_response({ message: e.message }, :not_found)
+    rescue_from ActiveRecord::RecordNotFound do |exception|
+      json_response({ message: exception.message }, :not_found)
     end
   end
 end

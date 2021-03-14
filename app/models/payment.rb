@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# app/models/payment.rb
 class Payment < ApplicationRecord
   # model association
   belongs_to :client

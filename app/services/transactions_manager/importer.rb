@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 module TransactionsManager
+  # Split the input file (set of lines) into registries including customer, payment, and transactions.
+  # Then call a job to process it.
   class Importer < ApplicationService
     def initialize(args = {})
       @lines = args[:lines]
