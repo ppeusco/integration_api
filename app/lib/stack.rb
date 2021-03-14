@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# This class implements a stack
 class Stack
   attr_reader :store
 

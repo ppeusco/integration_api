@@ -1,0 +1,178 @@
+---
+detectors:
+  Attribute:
+    enabled: true
+    exclude: []
+  BooleanParameter:
+    enabled: true
+    exclude:
+      - ApiVersion#initialize
+  ClassVariable:
+    enabled: true
+    exclude: []
+  ControlParameter:
+    enabled: true
+    exclude: []
+  DataClump:
+    enabled: true
+    exclude: []
+    max_copies: 2
+    min_clump_size: 2
+  DuplicateMethodCall:
+    allow_calls: []
+    enabled: true
+    exclude:
+      - TransactionsManager::Importer#call
+    max_calls: 1
+  FeatureEnvy:
+    enabled: true
+    exclude:
+      - CreateClients#change
+      - CreatePayments#change
+      - CreateTransactions#change
+      - RegistryManager::HashCreator#transactions_hash
+      - TransactionsManager::FindOrCreateClient#call
+      - TransactionsManager::CreatePayment#call
+  InstanceVariableAssumption:
+    enabled: true
+    exclude:
+      - V1::ClientsController
+  IrresponsibleModule:
+    enabled: true
+    exclude:
+      - ApiExceptions::ApiError
+      - ApiExceptions::ApiExceptionError
+      - ApiExceptions::ApiRequestsQuotaReachedError
+      - ApiExceptions::BadRequestError
+      - ApiExceptions::ForbiddenError
+      - ApiExceptions::NotFoundError
+      - ApiExceptions::UnauthorizedError
+      - ApiExceptions::UnprocessableEntityError
+      - ApiVersion
+      - ApplicationCable::Channel
+      - ApplicationCable::Connection
+      - ApplicationController
+      - ApplicationJob
+      - ApplicationMailer
+      - ApplicationRecord
+      - Client
+      - ExceptionHandler
+      - IntegrationApi::Application
+      - Payment
+      - ProcessRegistryJob 
+      - RequestSpecHelper
+      - Response
+      - Transaction
+  LongParameterList:
+    enabled: true
+    exclude: []
+    max_params: 3
+    overrides:
+      initialize:
+        max_params: 5
+  LongYieldList:
+    enabled: true
+    exclude: []
+    max_params: 3
+  ManualDispatch:
+    enabled: true
+    exclude: []
+  MissingSafeMethod:
+    enabled: true
+    exclude: []
+  ModuleInitialize:
+    enabled: true
+    exclude: []
+  NestedIterators:
+    enabled: true
+    exclude: []
+    ignore_iterators:
+      - tap
+    max_allowed_nesting: 1
+  NilCheck:
+    enabled: true
+    exclude: []
+  RepeatedConditional:
+    enabled: true
+    exclude:
+      - TransactionApi::V1::Client
+    max_ifs: 2
+  SubclassedFromCoreClass:
+    enabled: true
+    exclude: []
+  TooManyConstants:
+    enabled: true
+    exclude:
+      - HttpStatusCodes
+    max_constants: 3
+  TooManyInstanceVariables:
+    enabled: true
+    exclude: []
+    max_instance_variables: 4
+  TooManyMethods:
+    enabled: true
+    exclude: []
+    max_methods: 15
+  TooManyStatements:
+    enabled: true
+    exclude:
+      - initialize
+      - CreateClients#change
+      - CreatePayments#change
+      - TransactionApi::V1::Client#error_class
+      - TransactionsManager::Importer#call
+      - TransactionsManager::FindOrCreateClient#call
+      - TransactionsManager::CreatePayment#call
+      - RegistryManager::HashCreator#payment_hash
+      - RegistryManager::HashCreator#transactions_hash
+     
+    max_statements: 5
+  UncommunicativeMethodName:
+    accept: []
+    enabled: true
+    exclude: []
+    reject:
+      - /^[a-z]$/
+      - /[0-9]$/
+      - /[A-Z]/
+  UncommunicativeModuleName:
+    accept: []
+    enabled: true
+    exclude:
+      - TransactionApi::V1
+      - V1
+    reject:
+      - /^.$/
+      - /[0-9]$/
+  UncommunicativeParameterName:
+    accept: []
+    enabled: true
+    exclude: []
+    reject:
+      - /^.$/
+      - /[0-9]$/
+      - /[A-Z]/
+      - /^_/
+  UncommunicativeVariableName:
+    accept:
+      - /^_$/
+    enabled: true
+    exclude: []
+    reject:
+      - /^.$/
+      - /[0-9]$/
+      - /[A-Z]/
+  UnusedParameters:
+    enabled: true
+    exclude: []
+  UnusedPrivateMethod:
+    enabled: false
+    exclude: []
+  UtilityFunction:
+    enabled: true
+    exclude:
+      - CreateTransactionJob#perform
+      - GetTransactionsFileJob#perform
+      - ProcessRegistryJob#perform
+      - TransactionApi::V1::Client
+    public_methods_only: false

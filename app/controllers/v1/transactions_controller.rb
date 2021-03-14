@@ -8,22 +8,22 @@ module V1
 
     # GET /clients/:client_id/transactions
     def index
-      json_response(@client.transactions.paginate(page: params[:page], per_page: 20))
+      json_response(set_client.transactions.paginate(page: params[:page], per_page: 20))
     end
 
     # GET /clients/:client_id/transactions/:id
     def show
-      json_response(@transaction)
+      json_response(set_client_transaction)
     end
 
     private
 
     def set_client
-      @client = Client.find(params[:client_id])
+      @client ||= Client.find(params[:client_id])
     end
 
     def set_client_transaction
-      @transaction = @client.transactions.find_by!(id: params[:id]) if @client
+      @transaction ||= set_client.transactions.find_by!(id: params[:id]) if set_client
     end
   end
 end

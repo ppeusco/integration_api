@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 module RegistryManager
+  # Create a hash with the information available in a Registry
   class HashCreator < ApplicationService
     def initialize(args = {})
       @registry = args[:registry]

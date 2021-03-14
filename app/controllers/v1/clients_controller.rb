@@ -13,7 +13,7 @@ module V1
 
     # GET /clients/:id
     def show
-      json_response(@client)
+      json_response(set_client)
     end
 
     def pending_payments; end
@@ -23,7 +23,7 @@ module V1
     private
 
     def set_client
-      @client = Client.find(params[:id])
+      @client ||= Client.find(params[:id])
     end
   end
 end

@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# app/models/client.rb
 class Client < ApplicationRecord
   # model association
   has_many :transactions, dependent: :destroy

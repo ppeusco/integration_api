@@ -2,7 +2,9 @@
 
 module RegistryManager
   module Parser
+    # Parse the data corresponding to a footer
     class Footer < ApplicationService
+      # Represent the data corresponding to a footer.
       Result = Struct.new(:payment_date, :client_id, keyword_init: true)
 
       def initialize(footer)
